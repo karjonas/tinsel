@@ -3,6 +3,8 @@
 #include "mesh.h"
 #include "scene.h"
 
+#include <string>
+
 inline MeshGeometry GeometryFromMesh(const Mesh* mesh)
 {
     MeshGeometry geo;

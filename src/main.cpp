@@ -27,6 +27,9 @@
 #include <OpenGL/OpenGL.h>
 
 #endif
+#include <GL/gl.h>
+#include <GL/freeglut.h>
+
 
 #include <iostream>
 
@@ -186,7 +189,7 @@ void Init(int argc, char* argv[])
     g_options.limit = 1.5f;
 	g_options.clamp = FLT_MAX;
 	g_options.maxDepth = 4;
-	g_options.maxSamples = INT_MAX;
+	g_options.maxSamples = std::numeric_limits<int>::max();
 
     g_camera.position = Vec3(0.0f, 1.0f, 5.0f);
     g_camera.rotation = Quat();

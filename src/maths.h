@@ -1,14 +1,17 @@
 #pragma once
 
-#include <math.h>
+#include <cmath>
 
-#include <assert.h>
+#include <cstddef>
+#include <cassert>
 #include <algorithm>
 #include <limits>
 #include <random>
 
-#include <stdint.h>
-#include <float.h>
+#include <cstdint>
+#include <cfloat>
+#include <cstring>
+#include <cmath>
 
 #define USE_DOUBLE_PRECISION 0
 
@@ -225,7 +228,7 @@ struct Vec3
 
 	CUDA_CALLABLE inline void Validate() const
 	{
-		//assert(isfinite(x) && isfinite(y) && isfinite(z));
+		//assert(std::isfinite(x) && std::isfinite(y) && std::isfinite(z));
 	}
 
 	Real x;
@@ -299,10 +302,10 @@ struct Vec4
 
 	CUDA_CALLABLE inline void Validate()
 	{
-		//assert(isfinite(x));
-		//assert(isfinite(y));
-		//assert(isfinite(z));
-		//assert(isfinite(w));
+		//assert(std::isfinite(x));
+		//assert(std::isfinite(y));
+		//assert(std::isfinite(z));
+		//assert(std::isfinite(w));
 	}
 
 	Real x;
@@ -1600,19 +1603,19 @@ CUDA_CALLABLE inline Vec3 FaceForward(const Vec3& n, const Vec3& v)
 
 CUDA_CALLABLE inline void ValidateImpl(float x, const char* file, int line)
 {
-	if (!isfinite(x))
+	if (!std::isfinite(x))
 		printf("Fail: %s, %d (%f)\n", file, line, x);
 }
 
 CUDA_CALLABLE inline void ValidateImpl(const Vec3& x, const char* file, int line)
 {
-	if (!isfinite(x.x) || !isfinite(x.y) || !isfinite(x.z))
+	if (!std::isfinite(x.x) || !std::isfinite(x.y) || !std::isfinite(x.z))
 		printf("Fail: %s, %d (%f, %f, %f)\n", file, line, x.x, x.y, x.z);
 }
 
 CUDA_CALLABLE inline void ValidateImpl(const Color& c, const char* file, int line)
 {
-	if (!isfinite(c.x) || !isfinite(c.y) || !isfinite(c.z))
+	if (!std::isfinite(c.x) || !std::isfinite(c.y) || !std::isfinite(c.z))
 		printf("Fail: %s, %d\n", file, line);
 }
 

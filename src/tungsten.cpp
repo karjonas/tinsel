@@ -6,7 +6,7 @@
 #include "util.h"
 #include "pfm.h"
 
-#include "cjson/cjson.h"
+#include "cjson/cJSON.h"
 
 #include <map>
 

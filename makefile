@@ -1,8 +1,8 @@
 IISHELL = /bin/sh
 CC = g++
 
-CFLAGS = -g  -m64 -Wall -I"../.." -I"/opt/local/include" -O3 -DNDEBUG -ffast-math -Wno-deprecated-declarations 
-LDFLAGS = -g -m64 -L"/opt/local/lib" -framework GLUT -framework OpenGL -framework Cocoa 
+CFLAGS = -std=c++11 -g -m64 -Wall -I"/usr/include/GL" -I"/usr/include" -I"src/" -I"../.." -I"/opt/local/include" -O3 -DNDEBUG -ffast-math -Wno-deprecated-declarations 
+LDFLAGS = -g -m64 -L"/opt/local/lib" -lglut -lGL  -lGL -lGLU -lglut
 
 TARGET  = tinsel
 
@@ -16,7 +16,7 @@ all: $(TARGET)
 	./$(TARGET) data/transmission.tin 
 
 $(TARGET): $(OBJECTS) makefile $(TESTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $(TARGET) 
+	$(CC)  $(OBJECTS) $(LDFLAGS) -o $(TARGET) 
 
 clean:
 	-rm -f $(OBJECTS)

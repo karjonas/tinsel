@@ -47,7 +47,7 @@ double GetSeconds()
 	static double time = 0.0;	
 
 	struct timeval time_now;
-	gettimeofday(&time_now, NULL);
+	gettimeofday(&time_now, nullptr);
 
 	if (last_idle_time.tv_usec == 0)
 		last_idle_time = time_now;
